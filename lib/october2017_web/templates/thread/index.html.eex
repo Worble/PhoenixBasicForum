@@ -1,0 +1,24 @@
+<h2>Listing Threads</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date Created</th>
+      <th>OP</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for thread <- @threads do %>
+      <tr>
+        <td><%= NaiveDateTime.to_date(thread.inserted_at) %></td>
+        <td><%= hd(thread.posts).content %></td>
+        <td class="text-right">
+          <span><%= link "View Posts", to: thread_path(@conn, :show, thread), class: "btn btn-primary btn-xs" %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Thread", to: thread_path(@conn, :new) %></span>

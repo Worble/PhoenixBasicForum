@@ -1,0 +1,5 @@
+<h2>New Post</h2>
+
+<%= render "form.html", Map.put(assigns, :action, thread_post_path(@conn, :create, @thread)) %>
+
+<span><%= link "Back", to: thread_path(@conn, :show, @thread) %></span>

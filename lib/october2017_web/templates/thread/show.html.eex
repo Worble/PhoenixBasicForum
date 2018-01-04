@@ -1,0 +1,23 @@
+<h2>Show Thread</h2>
+
+<h2>Listing Posts</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Date Created</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for post <- @thread.posts do %>
+    <tr>
+      <td><%= post.content %></td>
+      <td><%= post.inserted_at %>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<span><%= link "Back to index", to: thread_path(@conn, :index) %></span>
+|
+<span><%= link "New Post", to: thread_post_path(@conn, :new, @thread) %></span>
